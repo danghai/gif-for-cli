@@ -1,0 +1,13 @@
+language: python
+python:
+    - "3.5"
+install:
+    - pip install .
+    - pip install coveralls flake8
+script:
+    # Check coding style
+    - flake8 --show-source --ignore=E501 .
+    - python3 -m unittest discover
+    - coverage run --source gif_for_cli -m unittest discover
+    - coverage report -m --omit="*/tests*"
+    - coveralls
