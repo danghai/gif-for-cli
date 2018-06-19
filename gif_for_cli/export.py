@@ -14,14 +14,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 import os
-from multiprocessing import Pool
 import subprocess
 
 from PIL import Image, ImageDraw, ImageFont
 from x256 import x256
 
 from . import third_party
-from .constants import STORED_CELL_CHAR, ANSI_RESET
+from .constants import STORED_CELL_CHAR
 from .utils import get_sorted_filenames, pool_abstraction, memoize
 
 
@@ -110,7 +109,6 @@ def export_txt_frame(txt_filename, cell_char, rows, cols, **options):
     im.save(img_filename)
 
 
-
 def _get_txt_frames(display_dirname):
     return [
         '{}/{}'.format(display_dirname, filename)
@@ -131,9 +129,8 @@ def _run_ffmpeg(export_filename, display_dirname, stdout, seconds_per_frame):
         export_filename,
     ]
     p = subprocess.Popen(cmd,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-    )
+                         stdout=subprocess.PIPE,
+                         stderr=subprocess.PIPE)
     out, err = p.communicate()
 
     if p.returncode == 0:

@@ -16,7 +16,7 @@ limitations under the License.
 import io
 import json
 import unittest
-from unittest.mock import mock_open, patch, MagicMock, Mock
+from unittest.mock import patch
 
 from gif_for_cli.__main__ import execute
 

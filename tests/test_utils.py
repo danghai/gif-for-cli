@@ -57,7 +57,7 @@ class TestLogFrameProgress(unittest.TestCase):
         self.assertEqual(output[-1], '\n')
 
         output = output[:-1].split(u'\u001b[2K\u001b[1000D')
-        
+
         self.assertEqual(output, [
             'Processed 0/5 frames...',
             'Processed 1/5 frames...',

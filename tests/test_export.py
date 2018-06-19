@@ -18,7 +18,7 @@ import os
 import unittest
 from unittest.mock import patch, Mock
 
-from gif_for_cli.constants import ANSI_CURSOR_UP, ANSI_RESET, STORED_CELL_CHAR
+from gif_for_cli.constants import ANSI_RESET, STORED_CELL_CHAR
 from gif_for_cli.export import _export_txt_frames, _get_txt_frames, _run_ffmpeg, export, export_txt_frame
 
 
@@ -197,7 +197,7 @@ class TestRunFfmpeg(unittest.TestCase):
       encoder         : Lavc57.107.100 mjpeg
     Side data:
       cpb: bitrate max/min/avg: 0/0/200000 buffer size: 0 vbv_delay: -1
-frame=   11 fps=0.0 q=20.2 Lsize=N/A time=00:00:01.10 bitrate=N/A speed=3.21x    
+frame=   11 fps=0.0 q=20.2 Lsize=N/A time=00:00:01.10 bitrate=N/A speed=3.21x
 video:258kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: unknown"""
 
     def test_ffmpeg_success(self, mock_Popen):
@@ -250,7 +250,6 @@ class TestExport(unittest.TestCase):
         export_filename = 'foo.gif'
         display_dirname = 'some-dir'
         stdout = io.StringIO()
-        cell_char = '$'
         seconds_per_frame = 0.1
         cpu_pool_size = 2
         output_dirnames = {
